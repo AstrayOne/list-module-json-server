@@ -6,8 +6,8 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import styles from './Item.module.css';
 
-import { deleteMovie, editMovie } from 'actions';
-import InputPanel from 'components/InputPanel';
+import { deleteMovie, editMovie } from 'models/movie/movieActions';
+import MoviesForm from 'components/MoviesForm';
 
 const Item = (props) => {
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const Item = (props) => {
   }
 
   const editItemForm = 
-    <InputPanel 
+    <MoviesForm 
       initialValues={initialValues}
       onSubmitHandler={confirmChangesHandler}
       buttonName='Confirm changes' 

@@ -6,9 +6,9 @@ import queryString from 'query-string';
 import styles from './ItemList.module.css';
 import Item from 'components/Item';
 import LoadingSpinner from 'components/LoadingSpinner';
-import ResponseError from 'components/ResponseError';
+import LoadingError from 'components/LoadingError';
 
-import { fetchMovies } from 'actions';
+import { fetchMovieList } from 'models/movieList/movieListActions';
 
 const ItemList = (props) => {
   const location = useLocation();
@@ -17,11 +17,11 @@ const ItemList = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchMovies());
+    dispatch(fetchMovieList());
   }, [])
 
-  const isLoading = useSelector(state => state.isLoading);
-  const isError = useSelector(state => state.isError);
+  const loading = useSelector(state => state.movieList.movieListLoading);
+  const error = useSelector(state => state.movieList.movieListError);
 
   const parsed = queryString.parse(location.search);
 
@@ -33,11 +33,11 @@ const ItemList = (props) => {
     )
   }
 
-  if(isError) {
-    return (<ResponseError />);
+  if(error) {
+    return (<LoadingError />);
   }
 
-  if(isLoading) {
+  if(loading) {
     return (<LoadingSpinner />);
   }
 
@@ -50,7 +50,6 @@ const ItemList = (props) => {
           )
         }
     )}
-
     </div>
   );
 }

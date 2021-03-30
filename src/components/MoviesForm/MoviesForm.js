@@ -3,10 +3,10 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 
-import styles from './InputPanel.module.css';
+import styles from './MoviesForm.module.css';
 import Input from 'components/Input';
 
-const InputPanel = (props) => {
+const MoviesForm = (props) => {
   const { initialValues, onSubmitHandler, buttonName } = props;
 
   const nextYear = new Date().getFullYear() + 1;
@@ -33,7 +33,7 @@ const InputPanel = (props) => {
   return (
     <Formik
       initialValues={initialValues}
-      //validationSchema={validationSchema}
+      validationSchema={validationSchema}
       onSubmit={onSubmitHandler}
       >
       {formProps => {
@@ -72,20 +72,20 @@ const InputPanel = (props) => {
   );
 };
 
-InputPanel.defaultProps = {
+MoviesForm.defaultProps = {
   initialValues: {},
   onSubmitHandler: () => {},
   buttonName: ''
 };
 
-InputPanel.propTypes = {
+MoviesForm.propTypes = {
   initialValues: PropTypes.object,
   onSubmitHandler: PropTypes.func,
   buttonName: PropTypes.string
 };
 
 
-export default InputPanel;
+export default MoviesForm;
 
 
     

@@ -1,0 +1,17 @@
+.root{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  gap: 20px;
+  height: 120px;
+}
+
+.errorIcon {
+  width: 30px;
+  height: 30px;
+  background-image: url('../../img/loading-error.svg');
+  background-size: 30px;
+  background-repeat: no-repeat;
+}

@@ -1,35 +1,18 @@
 {
-  "state": {
-    "lastId": 0
-  },
-  "movies": [
+  "movieList": [
     {
-      "title": "88888",
-      "director": "7777",
-      "releaseYear": "7777",
-      "runningTime": "77777",
-      "id": 27
+      "title": "The Godfather",
+      "director": "Francis Ford Coppola",
+      "releaseYear": "1972",
+      "runningTime": "175",
+      "id": 0
     },
     {
-      "title": "k",
-      "director": "k",
-      "releaseYear": "k",
-      "runningTime": "k",
-      "id": 28
-    },
-    {
-      "title": "1",
-      "director": "1",
-      "releaseYear": "1",
-      "runningTime": "1",
-      "id": 30
-    },
-    {
-      "title": "6",
-      "director": "6",
-      "releaseYear": "6",
-      "runningTime": "6",
-      "id": 31
+      "title": "The Dark Knight",
+      "director": "Christopher Nolan",
+      "releaseYear": "2008",
+      "runningTime": "152",
+      "id": 1
     }
   ]
 }

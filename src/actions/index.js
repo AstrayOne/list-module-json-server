@@ -69,3 +69,53 @@ export const fetchMovie = (movieId) => {
   }
 }
 
+export const showItemError = () => {
+  return {
+    type: 'SHOW_ITEM_ERROR',
+  }
+}
+
+export const hideItemError = () => {
+  return {
+    type: 'HIDE_ITEM_ERROR',
+  }
+}
+
+export const showItemListError = () => {
+  return {
+    type: 'SHOW_ITEMLIST_ERROR',
+  }
+}
+
+export const hideItemListError = () => {
+  return {
+    type: 'HIDE_ITEMLIST_ERROR',
+  }
+}
+
+export const showItemLoading = () => {
+  return {
+    type: 'SHOW_ITEM_LOADING',
+  }
+}
+
+export const hideItemLoading = () => {
+  return {
+    type: 'HIDE_ITEM_LOADING',
+  }
+}
+
+export const showItemListLoading = () => {
+  return {
+    type: 'SHOW_ITEMLIST_LOADING',
+  }
+}
+
+export const hideItemListLoading = () => {
+  return {
+    type: 'HIDE_ITEMLIST_LOADING',
+  }
+}
+
+
+

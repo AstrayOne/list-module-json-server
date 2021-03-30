@@ -76,6 +76,8 @@ module.exports = {
       constants: path.resolve(__dirname, 'src/constants/'),
       reducers: path.resolve(__dirname, 'src/reducers/'),
       sagas: path.resolve(__dirname, 'src/sagas/'),
+      models: path.resolve(__dirname, 'src/models/'),
+      requests: path.resolve(__dirname, 'src/requests/')
     },
   },
 };
