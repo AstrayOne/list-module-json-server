@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import ItemList from 'components/ItemList';
 import SearchPanel from 'components/SearchPanel';
@@ -9,16 +9,9 @@ import ItemDetail from 'components/ItemDetail';
 import Header from 'components/Header';
 
 import styles from './Content.module.css';
-import { fetchMovies } from 'actions';
 
 const Content = () => {
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchMovies());
-  // }, [])
-
-  const items = useSelector((state) => state.movieList);
+  const items = useSelector((state) => state.movieList.movieList);
 
   return (
     <div className={styles.root}>
@@ -48,3 +41,4 @@ const Content = () => {
 }
 
 export default Content;
+
