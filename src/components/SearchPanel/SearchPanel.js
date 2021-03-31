@@ -5,7 +5,6 @@ import queryString from 'query-string';
 import styles from './SearchPanel.module.css';
 
 const SearchPanel = () => {
-
   const history = useHistory();
   const parsed = queryString.parse(history.location.search);
 
@@ -13,25 +12,24 @@ const SearchPanel = () => {
   const [isSearchUsed, setIsSearchUsed] = useState(false);
 
   const changeSearch = (event) => {
-
-    if(!isSearchUsed) {
+    if (!isSearchUsed) {
       setIsSearchUsed(true);
     }
     setSearch(event.target.value);
-  }
+  };
+
+  const startSearch = () => {
+    history.push({
+      path: `/itemlist`,
+      search: `?search=${search}`,
+    });
+  };
 
   useEffect(() => {
     if (isSearchUsed) {
       startSearch();
     }
   }, [search]);
-
-  const startSearch = () => {
-    history.push({
-      path: `/itemlist`,
-      search: `?search=${search}`
-    });
-  }
 
   return (
     <div className={styles.root}>
@@ -43,10 +41,9 @@ const SearchPanel = () => {
         onChange={changeSearch}
         placeholder='Search'
       />
-      <div className={styles.searchButton}>
-      </div>
+      <div className={styles.searchButton} />
     </div>
-  )
+  );
 };
 
 export default SearchPanel;

@@ -1,9 +1,9 @@
-import React  from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import styles from './CreateItemPanel.module.css';
 import { addMovie } from 'actions';
 import MoviesForm from 'components/MoviesForm';
+import styles from './CreateItemPanel.module.css';
 
 const CreateItemPanel = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,8 @@ const CreateItemPanel = () => {
       <MoviesForm
         initialValues={initialValues}
         onSubmitHandler={addItemHandler}
-        buttonName='Add item' />
+        buttonName="Add item"
+      />
     </div>
   );
 }

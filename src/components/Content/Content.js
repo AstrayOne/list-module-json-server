@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import ItemList from 'components/ItemList';
 import SearchPanel from 'components/SearchPanel';
-
 import CreateItemPanel from 'components/CreateItemPanel';
 import ItemDetail from 'components/ItemDetail';
 import Header from 'components/Header';
@@ -25,14 +24,19 @@ const Content = () => {
           <CreateItemPanel />
           <ItemList items={items} />
         </Route>
-        <Route exact path='/itemlist/:id' render={({ match }) => {
+        <Route
+          exact
+          path="/itemlist/:id"
+          render={({ match }) => {
             const { id } = match.params;
-            return(
-              <ItemDetail item={items.find((item) => {
-                if (item.id == id) return true
-              })}/>
+            return (
+              <ItemDetail
+                item={items.find((item) => {
+                  if (item.id == id) return true;
+                })}
+              />
             );
-          }} 
+          }}
         />
         <Route render={() => <h1>Page not found</h1>} />
       </Switch>
@@ -41,4 +45,3 @@ const Content = () => {
 }
 
 export default Content;
-

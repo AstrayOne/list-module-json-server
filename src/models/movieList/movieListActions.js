@@ -15,8 +15,7 @@ export const showMovieListError = () => {
   return {
     type: 'SHOW_MOVIELIST_ERROR',
   };
-}
-;
+};
 export const hideMovieListError = () => {
   return {
     type: 'HIDE_MOVIELIST_ERROR',

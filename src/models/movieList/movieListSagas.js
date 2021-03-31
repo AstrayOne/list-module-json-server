@@ -1,14 +1,14 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { 
-  showMovieListError, 
-  hideMovieListError, 
-  showMovieListLoading, 
-  hideMovieListLoading,
-  setMovieList
-} from './movieListActions';
-
 import { getMovieList } from 'requests';
+
+import {
+  showMovieListError,
+  hideMovieListError,
+  showMovieListLoading,
+  hideMovieListLoading,
+  setMovieList,
+} from './movieListActions';
 
 function* fetchMovieListWorker() {
   try {

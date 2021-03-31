@@ -1,16 +1,16 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { 
-  showMovieError, 
-  hideMovieError, 
-  showMovieLoading, 
-  hideMovieLoading,
-  setMovie
-} from './movieActions';
-
 import { fetchMovieList } from 'models/movieList/movieListActions';
 
 import { getMovie, addMovie, editMovie, deleteMovie } from 'requests';
+
+import {
+  showMovieError,
+  hideMovieError,
+  showMovieLoading,
+  hideMovieLoading,
+  setMovie,
+} from './movieActions';
 
 function* addMovieWorker(action) {
   try {
@@ -56,5 +56,5 @@ export function* movieWatcher() {
   yield takeEvery('FETCH_MOVIE', fetchMovieWorker);
   yield takeEvery('ADD_MOVIE', addMovieWorker);
   yield takeEvery('DELETE_MOVIE', deleteMovieWorker);
-  yield takeEvery('EDIT_MOVIE', editMovieWorker)
+  yield takeEvery('EDIT_MOVIE', editMovieWorker);
 }

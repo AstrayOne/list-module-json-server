@@ -9,12 +9,12 @@ const Input = (props) => {
 
   return (
     <div className={styles.inputContainer}>
-      <Field 
-        className={styles.input} 
-        id={name} 
-        name={name} 
+      <Field
+        className={styles.input}
+        id={name}
+        name={name}
         placeholder={placeholder}
-        {...rest} 
+        {...rest}
       />
       <ErrorMessage name={name} component={Error} />
     </div>
@@ -24,13 +24,13 @@ const Input = (props) => {
 Input.defaultProps = {
   name: '',
   value: '',
-  placeholder: ''
+  placeholder: '',
 };
 
 Input.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
 };
 
 export default Input;

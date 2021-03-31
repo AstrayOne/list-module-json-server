@@ -3,8 +3,8 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 
-import styles from './MoviesForm.module.css';
 import Input from 'components/Input';
+import styles from './MoviesForm.module.css';
 
 const MoviesForm = (props) => {
   const { initialValues, onSubmitHandler, buttonName } = props;
@@ -12,9 +12,7 @@ const MoviesForm = (props) => {
   const nextYear = new Date().getFullYear() + 1;
 
   const validationSchema = Yup.object({
-    title: Yup.string()
-      .required('Required')
-      .max(30, 'Too long title'),
+    title: Yup.string().required('Required').max(30, 'Too long title'),
     director: Yup.string()
       .required('Required')
       .max(30, `Too long director's name`),
@@ -28,64 +26,57 @@ const MoviesForm = (props) => {
       .required('Required')
       .min(0, 'Wrong running time')
       .max(10000, 'Wrong running time'),
-    });
+  });
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmitHandler}
-      >
-      {formProps => {
-        return(
+    >
+      {(formProps) => {
+        return (
           <form className={styles.form} onSubmit={formProps.handleSubmit}>
-            <Input 
+            <Input
               name='title' 
               value={formProps.values.title}
               placeholder='Title'
             />
-            <Input 
+            <Input
               name='director' 
               value={formProps.values.director}
               placeholder='Director'
             />
-            <Input 
+            <Input
               name='releaseYear' 
               value={formProps.values.releaseYear}
               placeholder='Release year'
             />
-            <Input 
+            <Input
               name='runningTime' 
               value={formProps.values.runningTime}
               placeholder='Running time'
             />
-            <button
-              className={styles.confirmButton}
-              type='submit'
-            >
+            <button className={styles.confirmButton} type="submit">
               {buttonName}
             </button>
           </form>
-        )
+        );
       }}
-      </Formik>
+    </Formik>
   );
 };
 
 MoviesForm.defaultProps = {
   initialValues: {},
   onSubmitHandler: () => {},
-  buttonName: ''
+  buttonName: '',
 };
 
 MoviesForm.propTypes = {
   initialValues: PropTypes.object,
   onSubmitHandler: PropTypes.func,
-  buttonName: PropTypes.string
+  buttonName: PropTypes.string,
 };
 
-
 export default MoviesForm;
-
-
-    

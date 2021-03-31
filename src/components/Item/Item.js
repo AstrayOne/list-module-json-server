@@ -2,18 +2,17 @@ import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
-
 import PropTypes from 'prop-types';
-import styles from './Item.module.css';
 
 import { deleteMovie, editMovie } from 'models/movie/movieActions';
 import MoviesForm from 'components/MoviesForm';
+import styles from './Item.module.css';
 
 const Item = (props) => {
   const dispatch = useDispatch();
   const cn = classNames.bind(styles);
 
-  const { id , title, director, releaseYear, runningTime } = props.item;
+  const { id, title, director, releaseYear, runningTime } = props.item;
 
   const initialValues = {
     title: title,
@@ -26,7 +25,6 @@ const Item = (props) => {
   const [iconsVisible, setIconsVisible] = useState(false);
 
   const itemRef = useRef(null);
- 
   const buttonEditClassNames = cn('editButton', {
     buttonVisible: iconsVisible,
     buttonNoVisible: !iconsVisible,
@@ -41,11 +39,11 @@ const Item = (props) => {
     if (window.confirm('Delete Movie?')) {
       dispatch(deleteMovie(props.item.id));
     }
-  }
+  };
 
   const editItem = () => {
     setIsEdited(true);
-  }
+  };
 
   const handleMouseOver = () => {
     setIconsVisible(true);
@@ -59,16 +57,17 @@ const Item = (props) => {
     dispatch(editMovie({...values, id: id}));
     setIsEdited(false);
     setIconsVisible(false);
-  }
+  };
 
-  const editItemForm = 
-    <MoviesForm 
+  const editItemForm = (
+    <MoviesForm
       initialValues={initialValues}
       onSubmitHandler={confirmChangesHandler}
-      buttonName='Confirm changes' 
+      buttonName='Confirm changes'
     />
+  );
 
-  const item = 
+  const item = (
     <div className={styles.item}>
       <Link className={styles.title} to={`/itemlist/${id}`}>{`${title}, ${releaseYear}`}</Link>
       <p className={styles.director}>{director}</p>
@@ -76,15 +75,18 @@ const Item = (props) => {
       <div className={buttonEditClassNames} onClick={editItem}></div>
       <div className={buttonDeleteClassNames} onClick={deleteItem}></div>
     </div>
+  );
 
-  return(
-    <div className={styles.root} ref={itemRef}
+  return (
+    <div
+      className={styles.root}
+      ref={itemRef}
       onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}>
-      {
-        isEdited ? editItemForm : item
-      }
-    </div>)
+      onMouseOut={handleMouseOut}
+    >
+      {isEdited ? editItemForm : item}
+    </div>
+  );
 }
 
 Item.defaultProps = {

@@ -7,22 +7,16 @@ const initialState = {
 export const movieReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_MOVIE':
-      return {...state, movie: action.movie}
-
+      return { ...state, movie: action.movie }
     case 'SHOW_MOVIE_ERROR':
-      return {...state, movieError: true};
-
+      return { ...state, movieError: true };
     case 'HIDE_MOVIE_ERROR':
-      return {...state, movieError: false};
-
+      return { ...state, movieError: false };
     case 'SHOW_MOVIE_LOADING':
-      return {...state, movieLoading: true};
-  
+      return { ...state, movieLoading: true };
     case 'HIDE_MOVIE_LOADING':
-      return {...state, movieLoading: false};
-    
+      return { ...state, movieLoading: false };
     default:
       return state;
   }
 };
-

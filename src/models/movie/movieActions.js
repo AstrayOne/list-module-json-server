@@ -1,7 +1,7 @@
 export const fetchMovie = (movieId) => {
   return {
     type: 'FETCH_MOVIE',
-    movieId
+    movieId,
   };
 };
 
