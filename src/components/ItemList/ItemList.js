@@ -6,7 +6,7 @@ import queryString from 'query-string';
 import Item from 'components/Item';
 import LoadingSpinner from 'components/LoadingSpinner';
 import LoadingError from 'components/LoadingError';
-import { fetchMovieList } from 'models/movieList/movieListActions';
+import { fetchMovieList } from 'models/movieList/actions';
 import styles from './ItemList.module.css';
 
 const ItemList = (props) => {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 
-import { deleteMovie, editMovie } from 'models/movie/movieActions';
+import { deleteMovie, editMovie } from 'models/movie/actions';
 import MoviesForm from 'components/MoviesForm';
 import styles from './Item.module.css';
 

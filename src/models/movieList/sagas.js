@@ -8,7 +8,7 @@ import {
   showMovieListLoading,
   hideMovieListLoading,
   setMovieList,
-} from './movieListActions';
+} from './actions';
 
 function* fetchMovieListWorker() {
   try {

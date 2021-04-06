@@ -1,7 +1,7 @@
 const initialState = {
   movie: {},
   movieLoading: false,
-  movieError: false
+  movieError: false,
 };
 
 export const movieReducer = (state = initialState, action) => {

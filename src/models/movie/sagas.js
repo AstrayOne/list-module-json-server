@@ -1,6 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { fetchMovieList } from 'models/movieList/movieListActions';
+import {
+  addMovieToStore,
+  editMovieInStore,
+  deleteMovieFromStore,
+} from 'models/movieList/actions';
 
 import { getMovie, addMovie, editMovie, deleteMovie } from 'requests';
 
@@ -10,12 +14,12 @@ import {
   showMovieLoading,
   hideMovieLoading,
   setMovie,
-} from './movieActions';
+} from './actions';
 
 function* addMovieWorker(action) {
   try {
-    yield call(addMovie, action.movie);
-    yield put(fetchMovieList());
+    const response = yield call(addMovie, action.movie);
+    yield put(addMovieToStore(response.data));
   } catch (e) {
     alert('Add error');
   }
@@ -24,7 +28,7 @@ function* addMovieWorker(action) {
 function* deleteMovieWorker(action) {
   try {
     yield call(deleteMovie, action.movieId);
-    yield put(fetchMovieList());
+    yield put(deleteMovieFromStore(action.movieId));
   } catch (e) {
     alert('Delete error');
   }
@@ -33,7 +37,7 @@ function* deleteMovieWorker(action) {
 function* editMovieWorker(action) {
   try {
     yield call(editMovie, action.movie);
-    yield put(fetchMovieList());
+    yield put(editMovieInStore(action.movie));
   } catch (e) {
     alert('Edit error');
   }
