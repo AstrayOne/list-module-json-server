@@ -56,24 +56,3 @@ export const hideMovieLoading = () => {
     type: 'HIDE_MOVIE_LOADING',
   };
 };
-
-export const addMovieToStore = (movie) => {
-  return {
-    type: 'ADD_MOVIE_TO_STORE',
-    movie,
-  };
-};
-
-export const editMovieInStore = (movie) => {
-  return {
-    type: 'EDIT_MOVIE_IN_STORE',
-    movie,
-  };
-};
-
-export const deleteMovieFromStore = (movieId) => {
-  return {
-    type: 'DELETE_MOVIE_FROM_STORE',
-    movieId,
-  };
-};
