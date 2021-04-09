@@ -1,26 +1,50 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import {
-  addMovieToStore,
-  editMovieInStore,
-  deleteMovieFromStore,
-} from 'models/movieList/actions';
+import { 
+  getMovieList,
+  getMovie,
+  addMovie,
+  editMovie,
+  deleteMovie,
+} from 'requests';
 
-import { getMovie, addMovie, editMovie, deleteMovie } from 'requests';
-
 import {
-  showMovieError,
-  hideMovieError,
-  showMovieLoading,
-  hideMovieLoading,
-  setMovie,
+  fetchMovieListSuccess,
+  fetchMovieListFailure,
+  fetchMovieSuccess,
+  fetchMovieFailure,
+  editMovieSuccess,
+  editMovieFailure,
+  addMovieSuccess,
+  addMovieFailure,
+  deleteMovieSuccess,
+  deleteMovieFailure,
 } from './actions';
+
+function* fetchMovieListWorker() {
+  try {
+    const response = yield call(getMovieList);
+    yield put(fetchMovieListSuccess(response.data));
+  } catch (e) {
+    yield put(fetchMovieListFailure());
+  }
+}
+
+function* fetchMovieWorker(action) {
+  try {
+    const response = yield call(getMovie, action.movieId);
+    yield put(fetchMovieSuccess(response.data));
+  } catch (e) {
+    yield put(fetchMovieFailure());
+  }
+}
 
 function* addMovieWorker(action) {
   try {
     const response = yield call(addMovie, action.movie);
-    yield put(addMovieToStore(response.data));
+    yield put(addMovieSuccess(response.data));
   } catch (e) {
+    yield put(addMovieFailure());
     alert('Add error');
   }
 }
@@ -28,8 +52,9 @@ function* addMovieWorker(action) {
 function* deleteMovieWorker(action) {
   try {
     yield call(deleteMovie, action.movieId);
-    yield put(deleteMovieFromStore(action.movieId));
+    yield put(deleteMovieSuccess(action.movieId));
   } catch (e) {
+    yield put(deleteMovieFailure());
     alert('Delete error');
   }
 }
@@ -37,26 +62,15 @@ function* deleteMovieWorker(action) {
 function* editMovieWorker(action) {
   try {
     yield call(editMovie, action.movie);
-    yield put(editMovieInStore(action.movie));
+    yield put(editMovieSuccess(action.movie));
   } catch (e) {
+    yield put(editMovieFailure());
     alert('Edit error');
   }
 }
 
-function* fetchMovieWorker(action) {
-  try {
-    yield put(hideMovieError());
-    yield put(showMovieLoading());
-    const response = yield call(getMovie, action.movieId);
-    yield put(setMovie(response.data));
-    yield put(hideMovieLoading());
-  } catch (e) {
-    yield put(hideMovieLoading());
-    yield put(showMovieError());
-  }
-}
-
 export function* movieWatcher() {
+  yield takeEvery('FETCH_MOVIELIST', fetchMovieListWorker);
   yield takeEvery('FETCH_MOVIE', fetchMovieWorker);
   yield takeEvery('ADD_MOVIE', addMovieWorker);
   yield takeEvery('DELETE_MOVIE', deleteMovieWorker);

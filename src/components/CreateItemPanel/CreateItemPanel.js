@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addMovie } from 'actions';
+import { addMovie } from 'models/movie/actions';
 import MoviesForm from 'components/MoviesForm';
 import styles from './CreateItemPanel.module.css';
 

@@ -5,17 +5,56 @@ export const fetchMovie = (movieId) => {
   };
 };
 
-export const setMovie = (movie) => {
+export const fetchMovieSuccess = (movie) => {
   return {
-    type: 'SET_MOVIE',
+    type: 'FETCH_MOVIE_SUCCESS',
     movie,
   };
 };
+
+export const fetchMovieFailure = () => {
+  return {
+    type: 'FETCH_MOVIE_FAILURE',
+  };
+};
+
+export const fetchMovieList = () => {
+  return {
+    type: 'FETCH_MOVIELIST',
+  };
+};
+
+export const fetchMovieListSuccess = (movieList) => {
+  return {
+    type: 'FETCH_MOVIELIST_SUCCESS',
+    movieList,
+  };
+};
+
+export const fetchMovieListFailure = () => {
+  return {
+    type: 'FETCH_MOVIELIST_FAILURE',
+  };
+};
+
 
 export const addMovie = (movie) => {
   return {
     type: 'ADD_MOVIE',
     movie,
+  };
+};
+
+export const addMovieSuccess = (movie) => {
+  return {
+    type: 'ADD_MOVIE_SUCCESS',
+    movie,
+  };
+};
+
+export const addMovieFailure = () => {
+  return {
+    type: 'ADD_MOVIE_FAILURE',
   };
 };
 
@@ -26,6 +65,19 @@ export const deleteMovie = (movieId) => {
   };
 };
 
+export const deleteMovieSuccess = (movieId) => {
+  return {
+    type: 'DELETE_MOVIE_SUCCESS',
+    movieId,
+  };
+};
+
+export const deleteMovieFailure = () => {
+  return {
+    type: 'DELETE_MOVIE_FAILURE',
+  };
+};
+
 export const editMovie = (movie) => {
   return {
     type: 'EDIT_MOVIE',
@@ -33,26 +85,15 @@ export const editMovie = (movie) => {
   };
 };
 
-export const showMovieError = () => {
+export const editMovieSuccess = (movie) => {
   return {
-    type: 'SHOW_MOVIE_ERROR',
+    type: 'EDIT_MOVIE_SUCCESS',
+    movie,
   };
 };
 
-export const hideMovieError = () => {
+export const editMovieFailure = () => {
   return {
-    type: 'HIDE_MOVIE_ERROR',
-  };
-};
-
-export const showMovieLoading = () => {
-  return {
-    type: 'SHOW_MOVIE_LOADING',
-  };
-};
-
-export const hideMovieLoading = () => {
-  return {
-    type: 'HIDE_MOVIE_LOADING',
+    type: 'EDIT_MOVIE_FAILURE',
   };
 };

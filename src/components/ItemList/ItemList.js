@@ -6,7 +6,7 @@ import queryString from 'query-string';
 import Item from 'components/Item';
 import LoadingSpinner from 'components/LoadingSpinner';
 import LoadingError from 'components/LoadingError';
-import { fetchMovieList } from 'models/movieList/actions';
+import { fetchMovieList } from 'models/movie/actions';
 import styles from './ItemList.module.css';
 
 const ItemList = (props) => {
@@ -19,8 +19,8 @@ const ItemList = (props) => {
     dispatch(fetchMovieList());
   }, []);
 
-  const loading = useSelector((state) => state.movieList.movieListLoading);
-  const error = useSelector((state) => state.movieList.movieListError);
+  const loading = useSelector((state) => state.movie.movieListLoading);
+  const error = useSelector((state) => state.movie.movieListError);
 
   const parsed = queryString.parse(location.search);
 

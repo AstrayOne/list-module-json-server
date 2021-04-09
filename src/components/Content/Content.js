@@ -10,7 +10,7 @@ import Header from 'components/Header';
 import styles from './Content.module.css';
 
 const Content = () => {
-  const items = useSelector((state) => state.movieList.movieList);
+  const items = useSelector((state) => state.movie.movieList);
 
   return (
     <div className={styles.root}>
