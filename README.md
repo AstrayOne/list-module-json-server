@@ -9,3 +9,6 @@ Training application to learn how to work with HTTP requests and Redux Saga usin
 * Redux Saga
 * Axios
 * Webpack
+
+# Commands
+To start app: ```npm start```
